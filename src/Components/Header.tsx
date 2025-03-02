@@ -34,9 +34,6 @@ export const Header: React.FC<HeaderProps> = ({
     return () => clearTimeout(timer);
   }, [inputRef]);
 
-  // eslint-disable-next-line padding-line-between-statements, no-console
-  console.log(loading, `2`);
-
   return (
     <header className="todoapp__header">
       <button

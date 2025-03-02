@@ -33,6 +33,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
           className="todo__status"
           checked={completed}
           onChange={() => onToggle(id)}
+          disabled={isTemporary || isUpdating || isDeleting}
         />
       </label>
       <span data-cy="TodoTitle" className="todo__title">
@@ -43,9 +44,11 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         className="todo__remove"
         data-cy="TodoDelete"
         onClick={() => onDelete(id)}
+        disabled={isTemporary || isUpdating || isDeleting}
       >
         ×
       </button>
+
       <div
         data-cy="TodoLoader"
         className={cn('modal overlay', {
@@ -58,77 +61,3 @@ export const TodoItem: React.FC<TodoItemProps> = ({
     </div>
   );
 };
-
-// import classNames from 'classnames';
-// import { Todo } from '../types/Todo';
-// // import classNames from 'classnames';
-
-// type TodoItemProps = {
-//   todo: Todo;
-//   onDelete: (id: Todo['id']) => void;
-//   onToggle: (id: number) => void;
-//   isTemporary?: boolean;
-// };
-
-// export const TodoItem: React.FC<TodoItemProps> = ({
-//   todo,
-//   onDelete,
-//   onToggle,
-//   isTemporary = false,
-// }) => {
-//   const { id, title, completed } = todo;
-
-//   return (
-//     <div data-cy="Todo" className={classNames(`todo ${completed ? 'completed' : ''}`)}>
-//       <label className="todo__status-label">
-//         <input
-//           data-cy="TodoStatus"
-//           type="checkbox"
-//           className="todo__status"
-//           id={`todo-status-${id}`}
-//           checked={completed}
-//           onChange={() => onToggle(id)}
-//         />
-//         {/* <span className="visually-hidden">Toggle todo status</span> */}
-//       </label>
-//       <span data-cy="TodoTitle" className="todo__title">
-//         {title}
-//       </span>
-
-//       <button
-//         type="button"
-//         className="todo__remove"
-//         data-cy="TodoDelete"
-//         onClick={() => onDelete(id)}
-//       >
-//         ×
-//       </button>
-
-//       {/* {isTemporary && ( */}
-//       <div
-//         data-cy="TodoLoader"
-//         className={classNames(`modal overlay ${!isTemporary ? 'hidden' : ''}`)}
-//       >
-//         <div
-//           className="modal-background has-background-white-ter"
-//         />
-//         <div
-//           className="loader"
-//         />
-//       </div>
-//       {/* // )} */}
-
-//       {/* overlay will cover the todo while it is being deleted or updated
-//             наложение будет покрывать задачу,
-//             пока она удаляется или обновляется */}
-//       {/* {isTemporary && (
-//         <div data-cy="TodoLoader" className="modal overlay is-active">
-//           <div className="modal-background has-background-white-ter" />
-//           <div className="loader" />
-//         </div>
-//       )} */}
-//     </div>
-//   );
-// };
-// className={cn(`modal overlay ${!isTemporary ? 'is-active' : ''}`)}
-

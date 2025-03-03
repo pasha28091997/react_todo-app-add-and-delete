@@ -21,9 +21,3 @@ export const patchTodo = (
 ): Promise<Todo> => {
   return client.patch<Todo>(`/todos/${id}`, updates);
 };
-
-// export const patchTodo = ({ id, userId, title, completed }: Todo) => {
-//   return client.patch<Todo>(`/todos/${id}`, { userId, title, completed });
-// };
-
-// Add more methods here, Добавьте сюда больше методов

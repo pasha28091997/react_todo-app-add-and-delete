@@ -38,9 +38,9 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="todoapp__header">
       <button
         type="button"
-        className={classNames(
-          `todoapp__toggle-all ${areAllTodosCompleted ? 'active' : ''}`,
-        )}
+        className={classNames('todoapp__toggle-all', {
+          active: areAllTodosCompleted,
+        })}
         data-cy="ToggleAllButton"
         onClick={onToggleAll}
       />

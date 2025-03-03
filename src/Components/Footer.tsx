@@ -47,9 +47,9 @@ export const Footer: React.FC<FooterProps> = ({
 
       <button
         type="button"
-        className={classNames(
-          `todoapp__clear-completed ${hasCompleted ? '' : 'disabled'}`,
-        )}
+        className={classNames('todoapp__clear-completed', {
+          disabled: !hasCompleted,
+        })}
         data-cy="ClearCompletedButton"
         disabled={!hasCompleted}
         onClick={onClearCompleted}
